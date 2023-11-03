@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;600;900&family=Poppins:ital,wght@1,300&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: Montserrat, sans-serif;
+}
+
+body {
+    background-color: #222;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    min-width: 100vw;
+    justify-content: center;
+    align-items: center;
+}
+
+.container h1 {
+    color: whitesmoke;
+}
+
+.container h1 span {
+    color: #ea662e;
+}
+
+.calculator {
+    border: 5px solid #ea662e;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 50px;
+    padding: 20px;
+    margin: 10px;
+}
+
+/* .display {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    background-color: rgba(255, 255, 255, 20%);
+    margin: 20px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-radius: 30px;
+} */
+
+.display {
+    /* border: 5px solid red; */
+    height: 100%;
+    width: 100%;
+}
+
+.display input {
+    height: 100 px;
+    width: 500px;
+    margin: 20px;
+    border-radius: 30px;
+    padding: 20px;
+    font-size: 2rem;
+}
+
+/* .previous-operand {
+    display: flex;
+    flex-wrap: wrap;
+    width: 500px;
+    color: whitesmoke;
+    margin: 10px;
+}
+
+.current-operand {
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: 250px;
+    max-width: 540px;
+    color: whitesmoke;
+    margin: 10px;
+} */
+
+.buttons-grid {
+    /* border: 5px solid red; */
+    display: grid;
+    grid-template-columns: repeat(5, 100px);
+    grid-template-rows: repeat(4, 100px);
+    gap: 10px;
+}
+
+.buttons-grid button {
+    height: 100px;
+    height: 100px;
+    background-color: #222;
+    color: whitesmoke;
+    font-size: 2rem;
+    border: 3px solid #ea662e;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+
+.buttons-grid button:hover {
+    background-color: #bb5326;
+    color: whitesmoke;
+}
+
+.buttons-grid .ac-button {
+    background-color: #ea662e;
+    grid-column-end: span 2;
+    border-radius: 50px;
+}
+
+.buttons-grid .equal-button {
+    background-color: #ea662e;
+    grid-row: span 2;
+}
+
+.hasil {
+    margin: 20px;
+    color: whitesmoke;
+    font-size: 2rem;
+}
