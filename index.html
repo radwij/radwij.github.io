@@ -1,24 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TestVueJs</title>
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Calculator</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
-<body>
-    <div lass="container">
-        <h1>{{ title }}</h1>
-    </div>
+    <body>
+        <div id="app" class="container">
+            <h1><span>Calculator.</span> Calculate Simple Math</h1>
+            <div class="calculator">
+                
+                <div class="display">
+                    <input v-model="expression" type="text" @input="updateExpression" @keydown="calculateOnEnter" />
+                </div>
 
-    <script>
-        Vue.createApp({
-            data() {
-                return {
-                    title: 'Calculator'
-                };
-            }
-        }).mount('.container')
-    </script>
-</body>
+                <div class="buttons-grid">
+                    <button @click="addToExpression('1')">1</button>
+                    <button @click="addToExpression('2')">2</button>
+                    <button @click="addToExpression('3')">3</button>
+                    <button @click="clear" class="ac-button">AC</button> <!-- Use "clear" method to clear the expression -->
+                    <button @click="addToExpression('4')">4</button>
+                    <button @click="addToExpression('5')">5</button>
+                    <button @click="addToExpression('6')">6</button>
+                    <button @click="addToExpression('*')">x</button>
+                    <button @click="addToExpression('/')">÷</button>
+                    <button @click="addToExpression('7')">7</button>
+                    <button @click="addToExpression('8')">8</button>
+                    <button @click="addToExpression('9')">9</button>
+                    <button @click="addToExpression('-')">-</button>
+                    <button @click="calculate" class="equal-button">=</button>
+                    <button>DEL</button>
+                    <button @click="addToExpression('0')">0</button>
+                    <button @click="addToExpression('.')">.</button>
+                    <button @click="addToExpression('+')">+</button>
+                </div>
+                <p class="hasil">Hasil: {{ result }}</p>
+            </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+        <script>
+        new Vue({
+            el: "#app",
+            data: {
+            expression: "",
+            result: "",
+            },
+            methods: {
+            updateExpression: function () {
+                // Hanya izinkan karakter yang valid
+                this.expression = this.expression.replace(/[^-()\d/*+.]/g, "");
+            },
+            addToExpression: function (char) {
+                this.expression += char;
+            },
+            calculate: function () {
+                try {
+                this.result = eval(this.expression);
+                } catch (error) {
+                this.result = "Error";
+                }
+            },
+            clear: function () {
+                this.expression = "";
+                this.result = "";
+            },
+            calculateOnEnter: function (event) {
+                if (event.key === "Enter") {
+                this.calculate();
+                }
+            },
+            },
+        });
+        </script>
+    </body>
 </html>
